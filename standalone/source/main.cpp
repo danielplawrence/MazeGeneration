@@ -1,53 +1,31 @@
-#include <greeter/greeter.h>
-#include <greeter/version.h>
+#include <mazegenerator/DistanceGrid.h>
 
-#include <cxxopts.hpp>
+#include <fstream>
 #include <iostream>
-#include <string>
-#include <unordered_map>
+
+#include "mazegenerator/BinaryTree.h"
+#include "mazegenerator/Grid.h"
+#include "mazegenerator/Sidewinder.h"
 
 auto main(int argc, char** argv) -> int {
-  const std::unordered_map<std::string, greeter::LanguageCode> languages{
-      {"en", greeter::LanguageCode::EN},
-      {"de", greeter::LanguageCode::DE},
-      {"es", greeter::LanguageCode::ES},
-      {"fr", greeter::LanguageCode::FR},
-  };
+  (void)argc;
+  (void)argv;
 
-  cxxopts::Options options(*argv, "A program to welcome the world!");
+  auto grid = DistanceGrid::create(10, 10);
+  grid = Sidewinder::on(grid);
 
-  std::string language;
-  std::string name;
+  std::ofstream out("grid.ppm");
+  out << grid->toPortablePixmap(50);
+  out.close();
 
-  // clang-format off
-  options.add_options()
-    ("h,help", "Show help")
-    ("v,version", "Print the current version number")
-    ("n,name", "Name to greet", cxxopts::value(name)->default_value("World"))
-    ("l,lang", "Language code to use", cxxopts::value(language)->default_value("en"))
-  ;
-  // clang-format on
+  auto dGrid = std::dynamic_pointer_cast<DistanceGrid>(grid);
+  auto start = dGrid->get(0, 0);
+  auto distances = start->getDistances();
+  dGrid->distances = distances->pathTo(grid->get(5, 5));
 
-  auto result = options.parse(argc, argv);
-
-  if (result["help"].as<bool>()) {
-    std::cout << options.help() << std::endl;
-    return 0;
-  }
-
-  if (result["version"].as<bool>()) {
-    std::cout << "Greeter, version " << GREETER_VERSION << std::endl;
-    return 0;
-  }
-
-  auto langIt = languages.find(language);
-  if (langIt == languages.end()) {
-    std::cerr << "unknown language code: " << language << std::endl;
-    return 1;
-  }
-
-  greeter::Greeter greeter(name);
-  std::cout << greeter.greet(langIt->second) << std::endl;
+  std::ofstream out2("grid_solution.ppm");
+  out2 << dGrid->toPortablePixmap(50);
+  out2.close();
 
   return 0;
 }
