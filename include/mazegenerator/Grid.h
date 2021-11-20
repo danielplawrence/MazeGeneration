@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 class Grid;
 typedef std::shared_ptr<Grid> GridPtr;

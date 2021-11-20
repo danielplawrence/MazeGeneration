@@ -1,3 +1,5 @@
+#pragma once
+
 #include <mazegenerator/Distances.h>
 #include <mazegenerator/Grid.h>
 

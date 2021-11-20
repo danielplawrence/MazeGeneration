@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Grid.h"
 
 class Sidewinder {

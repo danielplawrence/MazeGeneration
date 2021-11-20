@@ -1,3 +1,5 @@
+#pragma once
+
 #include <mazegenerator/Grid.h>
 
 #include <random>

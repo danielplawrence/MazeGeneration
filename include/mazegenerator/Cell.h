@@ -2,6 +2,8 @@
 
 #include <map>
 #include <utility>
+#include <memory>
+#include <vector>
 
 class Neighbours;
 class Cell;
