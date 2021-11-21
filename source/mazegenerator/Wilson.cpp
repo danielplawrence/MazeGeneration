@@ -1,4 +1,5 @@
 #include <mazegenerator/Wilson.h>
+#include <algorithm>
 
 GridPtr Wilson::on(GridPtr grid) {
   auto unVisited = std::vector<CellPtr>(grid->cells());
