@@ -1,3 +1,4 @@
+#include <math.h>
 #include <mazegenerator/DistanceGrid.h>
 
 std::tuple<int, int, int, int, Color> DistanceGrid::contentsOf(CellPtr cell, int cellSize) {
@@ -10,7 +11,10 @@ std::tuple<int, int, int, int, Color> DistanceGrid::contentsOf(CellPtr cell, int
   auto x2 = (location.second + 1) * cellSize;
   auto y2 = (location.first + 1) * cellSize;
   auto distance = distances->get(cell);
-  auto max = distances->max().first;
+  if (!distance.has_value()) {
+    return {};
+  }
+  auto max = std::max({distances->max().first, 1});
   auto intensity = (float(max) - float(distance.value())) / float(max);
   auto c = color * intensity;
   return {x1, y1, x2, y2, c};

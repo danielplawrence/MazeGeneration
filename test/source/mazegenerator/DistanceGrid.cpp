@@ -40,4 +40,13 @@ TEST_CASE("DistanceGrid") {
     CHECK(secondVal == std::tuple<int, int, int, int, Color>(1, 1, 2, 2, {0.5, 0.25, 0.25}));
     CHECK(thirdVal == std::tuple<int, int, int, int, Color>(0, 1, 1, 2, {0, 0, 0}));
   }
+  SUBCASE("The case where there is no path to the target cell") {
+    auto distanceGrid = DistanceGrid::create(5, 5);
+    auto root = distanceGrid->get(0, 0);
+    auto second = distanceGrid->get(1, 1);
+    auto d = std::dynamic_pointer_cast<DistanceGrid>(distanceGrid);
+    d->setDistances(root->getDistances());
+    auto val = distanceGrid->contentsOf(second, 1);
+    CHECK(val == std::tuple<int, int, int, int, Color>(0, 0, 0, 0, {0.0, 0.0, 0.0}));
+  }
 }
