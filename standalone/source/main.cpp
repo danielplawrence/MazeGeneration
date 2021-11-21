@@ -19,13 +19,21 @@ auto main(int argc, char** argv) -> int {
   out.close();
 
   auto dGrid = std::dynamic_pointer_cast<DistanceGrid>(grid);
-  auto start = dGrid->get(0, 0);
+  auto start = dGrid->get(15, 15);
   auto distances = start->getDistances();
-  dGrid->setDistances(distances->pathTo(grid->get(15, 15)));
+  dGrid->setDistances(distances);
 
-  std::ofstream out2("grid_solution.ppm");
+  std::ofstream out2("grid_distances.ppm");
   out2 << dGrid->toPortablePixmap(50);
   out2.close();
+
+  auto start2 = dGrid->get(0, 0);
+  auto distances2 = start->getDistances();
+  dGrid->setDistances(distances->pathTo(grid->get(15, 15)));
+
+  std::ofstream out3("grid_solution.ppm");
+  out3 << dGrid->toPortablePixmap(50);
+  out3.close();
 
   return 0;
 }

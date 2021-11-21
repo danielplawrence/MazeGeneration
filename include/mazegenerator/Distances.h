@@ -3,6 +3,7 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <optional>
 
 #include "Cell.h"
 
