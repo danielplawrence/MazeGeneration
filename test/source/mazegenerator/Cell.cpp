@@ -35,7 +35,7 @@ TEST_CASE("Cell") {
     CHECK(std::find(cell1->getLinks().begin(), cell1->getLinks().end(), cell2)
           != cell1->getLinks().end());
     CHECK(std::find(cell2->getLinks().begin(), cell2->getLinks().end(), cell1)
-          != cell1->getLinks().end());
+          != cell2->getLinks().end());
   }
   SUBCASE("A cell can list its neighbors") {
     auto cell = Cell::create(0, 0);
