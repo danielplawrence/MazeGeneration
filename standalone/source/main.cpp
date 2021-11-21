@@ -11,7 +11,7 @@ auto main(int argc, char** argv) -> int {
   (void)argc;
   (void)argv;
 
-  auto grid = DistanceGrid::create(10, 10);
+  auto grid = DistanceGrid::create(30, 30);
   grid = Sidewinder::on(grid);
 
   std::ofstream out("grid.ppm");
@@ -21,7 +21,7 @@ auto main(int argc, char** argv) -> int {
   auto dGrid = std::dynamic_pointer_cast<DistanceGrid>(grid);
   auto start = dGrid->get(0, 0);
   auto distances = start->getDistances();
-  dGrid->distances = distances->pathTo(grid->get(5, 5));
+  dGrid->setDistances(distances->pathTo(grid->get(15, 15)));
 
   std::ofstream out2("grid_solution.ppm");
   out2 << dGrid->toPortablePixmap(50);

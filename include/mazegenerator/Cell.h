@@ -13,10 +13,10 @@ typedef std::shared_ptr<Distances> DistancesPtr;
 
 class Neighbours {
 public:
-  [[maybe_unused]] CellPtr north{};
-  [[maybe_unused]] CellPtr south{};
-  [[maybe_unused]] CellPtr east{};
-  [[maybe_unused]] CellPtr west{};
+  CellPtr north{};
+  CellPtr south{};
+  CellPtr east{};
+  CellPtr west{};
   std::vector<CellPtr> getAll();
 };
 
