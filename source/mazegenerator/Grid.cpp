@@ -94,3 +94,10 @@ std::tuple<int, int, int, int, Color> Grid::contentsOf(CellPtr cell, int cellSiz
   (void)cellSize;
   return {};
 }
+std::vector<CellPtr> Grid::deadEnds() {
+  std::vector<CellPtr> res;
+  auto c = this->cells();
+  std::copy_if(c.begin(), c.end(), std::back_inserter(res),
+               [](const CellPtr& cell) { return cell->getLinks().size() == 1; });
+  return res;
+}

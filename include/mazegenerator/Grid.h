@@ -36,5 +36,6 @@ public:
   std::string toPortablePixmap(int cellSize = 10);
   virtual std::tuple<int, int, int, int, Color> contentsOf(CellPtr cell, int cellSize);
   std::vector<std::shared_ptr<Cell>> cells();
+  std::vector<std::shared_ptr<Cell>> deadEnds();
   std::vector<std::vector<std::shared_ptr<Cell>>> grid;
 };

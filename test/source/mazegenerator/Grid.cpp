@@ -40,6 +40,13 @@ TEST_CASE("Grid") {
     auto grid = Grid(3, 3);
     CHECK(typeid(grid.randomCell()) == typeid(Cell::create(0, 0)));
   }
+  SUBCASE("A grid can list its dead ends") {
+    auto grid = Grid(3, 3);
+    auto first = grid.get(0, 0);
+    auto second = grid.get(1, 0);
+    first->link(second);
+    CHECK(grid.deadEnds().size() == 2);
+  }
   SUBCASE("Converting a grid to a ppm string") {
     auto grid = Grid(3, 3);
     auto res = grid.toPortablePixmap(2);
