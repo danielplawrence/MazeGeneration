@@ -7,5 +7,5 @@
 
 class BinaryTree : Maze {
 public:
-  GridPtr on(GridPtr grid);
+  GridPtr on(GridPtr grid) override;
 };
