@@ -21,10 +21,6 @@ TEST_CASE("Cell") {
     cell1->link(cell2, false);
     CHECK(cell1->linkedTo(cell2));
     CHECK(!cell2->linkedTo(cell1));
-    CHECK(std::find(cell1->getLinks().begin(), cell1->getLinks().end(), cell2)
-          != cell1->getLinks().end());
-    CHECK(std::find(cell2->getLinks().begin(), cell2->getLinks().end(), cell1)
-          == cell2->getLinks().end());
   }
   SUBCASE("A cell can be linked to another bidirectionally") {
     auto cell1 = Cell::create(0, 0);
