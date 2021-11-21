@@ -2,6 +2,7 @@
 #include <mazegenerator/BinaryTree.h>
 #include <mazegenerator/DistanceGrid.h>
 #include <mazegenerator/HuntAndKill.h>
+#include <mazegenerator/RecursiveBackTracker.h>
 #include <mazegenerator/Wilson.h>
 
 #include <fstream>
@@ -14,7 +15,7 @@ auto main(int argc, char** argv) -> int {
   (void)argv;
 
   auto grid = DistanceGrid::create(30, 30);
-  grid = HuntAndKill().on(grid);
+  grid = RecursiveBackTracker().on(grid);
 
   std::ofstream out("grid.ppm");
   out << grid->toPortablePixmap(50);
