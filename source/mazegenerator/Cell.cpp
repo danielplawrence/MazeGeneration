@@ -2,7 +2,6 @@
 #include <mazegenerator/Distances.h>
 
 #include <vector>
-#include <algorithm>
 
 std::pair<int, int> Cell::getLocation() { return {this->row, this->column}; }
 
