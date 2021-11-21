@@ -2,6 +2,8 @@
 #include <imagewriter/Color.h>
 #include <mazegenerator/Grid.h>
 
+#include <algorithm>
+#include <iterator>
 #include <random>
 
 void Grid::prepareGrid() {
