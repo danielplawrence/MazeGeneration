@@ -1,5 +1,6 @@
-#include <math.h>
+
 #include <mazegenerator/DistanceGrid.h>
+#include <algorithm>
 
 std::tuple<int, int, int, int, Color> DistanceGrid::contentsOf(CellPtr cell, int cellSize) {
   if (distances == nullptr) {
