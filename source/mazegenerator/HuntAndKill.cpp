@@ -2,6 +2,7 @@
 #include <mazegenerator/HuntAndKill.h>
 
 #include <algorithm>
+#include <iterator>
 
 GridPtr HuntAndKill::on(GridPtr grid) {
   auto current = grid->randomCell();
