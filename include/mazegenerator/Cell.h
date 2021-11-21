@@ -18,6 +18,7 @@ public:
   CellPtr east{};
   CellPtr west{};
   std::vector<CellPtr> getAll();
+  CellPtr sample();
 };
 
 class Cell {

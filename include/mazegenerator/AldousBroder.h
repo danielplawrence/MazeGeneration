@@ -5,7 +5,7 @@
 
 #include <random>
 
-class BinaryTree : Maze {
+class AldousBroder : public Maze {
 public:
   GridPtr on(GridPtr grid);
 };

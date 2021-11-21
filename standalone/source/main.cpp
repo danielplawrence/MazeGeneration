@@ -1,3 +1,4 @@
+#include <mazegenerator/AldousBroder.h>
 #include <mazegenerator/DistanceGrid.h>
 
 #include <fstream>
@@ -12,7 +13,7 @@ auto main(int argc, char** argv) -> int {
   (void)argv;
 
   auto grid = DistanceGrid::create(30, 30);
-  grid = Sidewinder::on(grid);
+  grid = AldousBroder().on(grid);
 
   std::ofstream out("grid.ppm");
   out << grid->toPortablePixmap(50);

@@ -2,6 +2,8 @@
 #include <imagewriter/Color.h>
 #include <mazegenerator/Grid.h>
 
+#include <random>
+
 void Grid::prepareGrid() {
   for (int i = 0; i < rows; ++i) {
     std::vector<std::shared_ptr<Cell>> r;
@@ -23,6 +25,12 @@ void Grid::configureCells() {
     }
   }
 }
+int randomInt() {
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> distr(0, 2);
+  return distr(gen);
+}
 std::shared_ptr<Cell> Grid::get(int row, int col) {
   if (row < 0 || row > rows - 1) {
     return nullptr;
@@ -33,7 +41,7 @@ std::shared_ptr<Cell> Grid::get(int row, int col) {
   return grid[row][col];
 }
 int Grid::size() const { return rows * columns; }
-std::shared_ptr<Cell> Grid::randomCell() { return get(rand(), rand()); }
+std::shared_ptr<Cell> Grid::randomCell() { return get(randomInt(), randomInt()); }
 std::string Grid::toPortablePixmap(int cellSize) {
   auto imgWidth = cellSize * this->columns;
   auto imgHeight = cellSize * this->rows;

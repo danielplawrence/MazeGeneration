@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Grid.h"
+#include <mazegenerator/Grid.h>
+#include <mazegenerator/Maze.h>
 
-class Sidewinder {
+class Sidewinder : Maze {
 public:
-  static GridPtr on(GridPtr grid);
+  GridPtr on(GridPtr grid);
 };
