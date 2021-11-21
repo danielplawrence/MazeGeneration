@@ -27,14 +27,5 @@ auto main(int argc, char** argv) -> int {
   std::ofstream out2("grid_distances.ppm");
   out2 << dGrid->toPortablePixmap(50);
   out2.close();
-
-  auto start2 = dGrid->get(0, 0);
-  auto distances2 = start->getDistances();
-  dGrid->setDistances(distances->pathTo(grid->get(15, 15)));
-
-  std::ofstream out3("grid_solution.ppm");
-  out3 << dGrid->toPortablePixmap(50);
-  out3.close();
-
   return 0;
 }

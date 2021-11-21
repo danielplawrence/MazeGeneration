@@ -36,7 +36,7 @@ DistancesPtr Distances::pathTo(CellPtr goal) {
   auto current = std::move(goal);
   auto breadcrumbs = Distances::create(root);
   breadcrumbs->set(current, this->cells[current]);
-  do {
+  while (current != root) {
     for (const auto& neighbor : current->getLinks()) {
       if (this->get(neighbor).has_value() && this->get(current).has_value()
           && this->get(neighbor).value() < this->get(current).value()) {
@@ -45,6 +45,6 @@ DistancesPtr Distances::pathTo(CellPtr goal) {
         break;
       }
     }
-  } while (current != root);
+  }
   return breadcrumbs;
 }

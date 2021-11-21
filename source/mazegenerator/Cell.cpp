@@ -43,9 +43,6 @@ CellPtr Cell::create(int r, int c) {
   cell->ptr = ptr;
   return ptr;
 }
-bool Cell::operator==(const Cell& cell) const {
-  return this->row == cell.row && this->column == cell.column;
-}
 std::vector<CellPtr> Cell::getNeighbors() { return this->neighbours.getAll(); }
 DistancesPtr Cell::getDistances() {
   auto distances = Distances::create(this->getPtr());

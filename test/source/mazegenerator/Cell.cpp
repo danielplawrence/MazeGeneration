@@ -29,6 +29,24 @@ TEST_CASE("Cell") {
     CHECK(cell1->linkedTo(cell2));
     CHECK(cell2->linkedTo(cell1));
   }
+  SUBCASE("Unidirectional links can be unlinked") {
+    auto cell1 = Cell::create(0, 0);
+    auto cell2 = Cell::create(1, 1);
+    cell1->link(cell2);
+    CHECK(cell1->linkedTo(cell2));
+    cell1->unlink(cell2);
+    CHECK(!cell1->linkedTo(cell2));
+  }
+  SUBCASE("Bidirectional links can be unlinked") {
+    auto cell1 = Cell::create(0, 0);
+    auto cell2 = Cell::create(1, 1);
+    cell1->link(cell2, true);
+    CHECK(cell1->linkedTo(cell2));
+    CHECK(cell2->linkedTo(cell1));
+    cell1->unlink(cell2);
+    CHECK(!cell1->linkedTo(cell2));
+    CHECK(!cell2->linkedTo(cell1));
+  }
   SUBCASE("A cell can list its neighbors") {
     auto cell = Cell::create(0, 0);
     auto cell2 = Cell::create(1, 1);

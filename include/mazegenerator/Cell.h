@@ -18,7 +18,6 @@ public:
   CellPtr east{};
   CellPtr west{};
   std::vector<CellPtr> getAll();
-  CellPtr sample();
 };
 
 class Cell {
@@ -34,7 +33,6 @@ public:
   bool linkedTo(const CellPtr& cell);
   std::vector<CellPtr> getNeighbors();
   static CellPtr create(int row, int column);
-  bool operator==(const Cell& cell) const;
   Neighbours neighbours;
   DistancesPtr getDistances();
 
