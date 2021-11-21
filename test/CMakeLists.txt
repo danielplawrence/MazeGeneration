@@ -26,7 +26,7 @@ endif()
 
 # ---- Create binary ----
 
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp)
+file(GLOB sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp)
 add_executable(${PROJECT_NAME} ${sources})
 target_link_libraries(${PROJECT_NAME} doctest::doctest MazeGenerator::MazeGenerator)
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17)
@@ -41,7 +41,7 @@ if(NOT TEST_INSTALLED_VERSION)
   endif()
 endif()
 
-# ---- Add GreeterTests ----
+# ---- Add MazeGeneratorTests ----
 
 enable_testing()
 

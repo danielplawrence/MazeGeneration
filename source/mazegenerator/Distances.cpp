@@ -1,7 +1,7 @@
 #include <mazegenerator/Distances.h>
 
-#include <utility>
 #include <algorithm>
+#include <utility>
 
 Distances::Distances(const std::shared_ptr<Cell>& root) {
   this->root = root;

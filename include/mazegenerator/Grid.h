@@ -3,9 +3,9 @@
 #include <imagewriter/Color.h>
 #include <mazegenerator/Cell.h>
 
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 class Grid;
 typedef std::shared_ptr<Grid> GridPtr;

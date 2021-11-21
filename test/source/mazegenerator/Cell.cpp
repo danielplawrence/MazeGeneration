@@ -1,8 +1,8 @@
 #include <doctest/doctest.h>
 #include <mazegenerator/Cell.h>
 #include <mazegenerator/Distances.h>
-#include <algorithm>
 
+#include <algorithm>
 #include <vector>
 
 TEST_CASE("Cell") {

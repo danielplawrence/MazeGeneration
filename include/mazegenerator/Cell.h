@@ -1,8 +1,8 @@
 #pragma once
 
 #include <map>
-#include <utility>
 #include <memory>
+#include <utility>
 #include <vector>
 
 class Neighbours;
