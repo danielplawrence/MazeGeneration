@@ -19,7 +19,7 @@ auto main(int argc, char** argv) -> int {
   (void)argv;
   int width, height, channels;
   unsigned char* img
-      = stbi_load("/Users/danlaw/Downloads/heart.jpg", &width, &height, &channels, 0);
+      = stbi_load("/Users/danlaw/Downloads/city.png", &width, &height, &channels, 0);
   if (img == NULL) {
     printf("Error in loading the image\n");
     exit(1);
