@@ -68,7 +68,7 @@ Mask::Mask(unsigned char* img, int width, int height, int channels) {
       for (int channel = 0; channel < channels; channel++) {
         v += *(p + channel);
       }
-      if (v / channels < 100) {
+      if (v / channels > 100) {
         lineRes.push_back(false);
       } else {
         lineRes.push_back(true);
@@ -79,4 +79,4 @@ Mask::Mask(unsigned char* img, int width, int height, int channels) {
   this->rows = height;
   this->columns = width;
   this->bits = res;
-};
+}
