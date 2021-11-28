@@ -14,6 +14,8 @@ class DistanceGrid : public Grid {
 public:
   static GridPtr create(int rows, int columns, Color color = {1.0, 0.5, 0.5}) {
     auto grid = new DistanceGrid(rows, columns);
+    grid->prepareGrid();
+    grid->configureCells();
     grid->color = color;
     grid->ptr = GridPtr(grid);
     return grid->ptr;

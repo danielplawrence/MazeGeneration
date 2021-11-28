@@ -20,10 +20,12 @@ void Grid::configureCells() {
   for (int i = 0; i < rows; ++i) {
     for (int j = 0; j < columns; j++) {
       auto cell = get(i, j);
-      cell->neighbours.north = get(i - 1, j);
-      cell->neighbours.south = get(i + 1, j);
-      cell->neighbours.east = get(i, j + 1);
-      cell->neighbours.west = get(i, j - 1);
+      if (cell != nullptr) {
+        cell->neighbours.north = get(i - 1, j);
+        cell->neighbours.south = get(i + 1, j);
+        cell->neighbours.east = get(i, j + 1);
+        cell->neighbours.west = get(i, j - 1);
+      }
     }
   }
 }
@@ -61,6 +63,9 @@ std::string Grid::toPortablePixmap(int cellSize) {
   for (int x = 0; x < this->rows; ++x) {
     for (int y = 0; y < this->columns; ++y) {
       auto cell = get(x, y);
+      if (cell == nullptr) {
+        continue;
+      }
       auto location = cell->getLocation();
       auto x1 = location.second * cellSize;
       auto y1 = location.first * cellSize;
